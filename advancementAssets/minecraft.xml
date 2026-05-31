@@ -2,7 +2,7 @@
 <group name="root">
     <group name="Minecraft">
         <advancement id="minecraft:story/mine_stone"            name="Stone Age"/>
-        <advancement id="minecraft:story/upgrade_tools"         name="Getting an Upgrade"       short_name="Upgrade"/>
+        <advancement id="minecraft:story/upgrade_tools"         "name"="Getting an Upgrade"       short_name="Upgrade"/>
         <advancement id="minecraft:story/iron_tools"            name="Isn't It Iron&#160;Pick"       short_name="Iron Pick"/>
         <advancement id="minecraft:story/smelt_iron"            name="Acquire Hardware"         short_name="Hardware"/>
         <advancement id="minecraft:story/mine_diamond"          name="Diamonds!"/>
@@ -124,5 +124,144 @@
                 <criterion id="minecraft:ravager"/>
             </criteria>
         </advancement>
+    </group>
+    <group name="Husbandry">
+        <advancement id="minecraft:husbandry/root"                    name="Husbandry"                        icon="husbandry"/>
+        <advancement id="minecraft:husbandry/plant_seed"              name="A Seedy Place"                    short_name="Seedy Place"/>
+        <advancement id="minecraft:husbandry/breed_an_animal"         name="The Parrots and the Bats"         short_name="Parrots"/>
+        <advancement id="minecraft:husbandry/tame_an_animal"          name="Best Friends Forever"             short_name="BFF's"/>
+        <advancement id="minecraft:husbandry/fishy_business"          name="Fishy Business"                   short_name="Fishy Biz"/>
+        <advancement id="minecraft:husbandry/tactical_fishing"        name="Tactical Fishing"                 short_name="Tactical"/>
+        <advancement id="minecraft:husbandry/silk_touch_nest"         name="Total Beelocation" short_name="Beelocation" half="false"/>
+        <advancement id="minecraft:husbandry/safely_harvest_honey"    name="Bee Our Guest" short_name="Our Guest" half="false"/>
+        <advancement id="minecraft:husbandry/obtain_netherite_hoe" name="Serious Dedication" short_name="Dedication" type="challenge" half="false"/>
+        <advancement id="minecraft:husbandry/bred_all_animals"        name="Two by Two" type="challenge" half="false">
+            <criteria goal="Animals Bred">
+                <criterion id="minecraft:pig"/>
+                <criterion id="minecraft:sheep"/>
+                <criterion id="minecraft:chicken"/>
+                <criterion id="minecraft:cow"/>
+                <criterion id="minecraft:mooshroom"/>
+                <criterion id="minecraft:cat"/>
+                <criterion id="minecraft:ocelot"/>
+                <criterion id="minecraft:wolf"/>
+                <criterion id="minecraft:fox"/>
+                <criterion id="minecraft:rabbit"/>
+                <criterion id="minecraft:bee"/>
+                <criterion id="minecraft:horse"/>
+                <criterion id="minecraft:donkey"/>
+                <criterion id="minecraft:mule"/>
+                <criterion id="minecraft:llama"/>
+                <criterion id="minecraft:panda"/>
+                <criterion id="minecraft:turtle"/>
+                <criterion id="minecraft:strider"/>
+                <criterion id="minecraft:hoglin"/>
+            </criteria>
+        </advancement>
+        <advancement id="minecraft:husbandry/balanced_diet"           name="A Balanced Diet" short_name="ABD" type="challenge" half="false">
+            <criteria goal="Foods Eaten">
+                <criterion id="bread"/>
+                <criterion id="cooked_porkchop"        name="Porkchop"/>
+                <criterion id="porkchop"               name="Raw Porkchop"/>
+                <criterion id="cooked_beef"            name="Beef"/>
+                <criterion id="beef"                   name="Raw Beef"/>
+                <criterion id="cooked_chicken"         name="Chicken"/>
+                <criterion id="chicken"                name="Raw Chicken"  icon="raw_chicken"/>
+                <criterion id="cooked_mutton"          name="Mutton"/>
+                <criterion id="mutton"                 name="Raw Mutton"/>
+                <criterion id="cooked_rabbit"          name="Rabbit"/>
+                <criterion id="rabbit"                 name="Raw Rabbit"   icon="raw_rabbit"/>
+                <criterion id="cooked_cod"             name="Cod"/>
+                <criterion id="cod"                    name="Raw Cod"/>
+                <criterion id="tropical_fish"/>
+                <criterion id="cooked_salmon"          name="Salmon"/>
+                <criterion id="salmon"                 name="Raw Salmon"/>
+                <criterion id="pufferfish"/>
+                <criterion id="cookie"/>
+                <criterion id="pumpkin_pie"/>
+                <criterion id="apple"/>
+                <criterion id="golden_apple"/>
+                <criterion id="enchanted_golden_apple" name="God Apple"/>
+                <criterion id="golden_carrot"/>
+                <criterion id="carrot"/>
+                <criterion id="melon_slice"/>
+                <criterion id="baked_potato"/>
+                <criterion id="potato"/>
+                <criterion id="poisonous_potato"       name="Poison Potato"/>
+                <criterion id="beetroot"/>
+                <criterion id="sweet_berries"/>
+                <criterion id="chorus_fruit"/>
+                <criterion id="mushroom_stew"          name="Shroom Stew"/>
+                <criterion id="suspicious_stew"        name="Sus Stew"/>
+                <criterion id="rabbit_stew"/>
+                <criterion id="beetroot_soup"          name="Beet Soup"/>
+                <criterion id="dried_kelp"/>
+                <criterion id="honey_bottle"/>
+                <criterion id="rotten_flesh"/>
+                <criterion id="spider_eye"/>
+            </criteria>
+        </advancement>
+        <advancement id="minecraft:husbandry/complete_catalogue" name="A Complete Catalogue" short_name="Catalogue" type="challenge" half="false">
+            <criteria goal="Cats">
+                <criterion id="textures/entity/cat/jellie.png"            name="Jellie"     icon="jellie"/>
+                <criterion id="textures/entity/cat/calico.png"            name="Calico"     icon="calico"/>
+                <criterion id="textures/entity/cat/red.png"               name="Red"        icon="red"/>
+                <criterion id="textures/entity/cat/black.png"             name="Tuxedo"     icon="tuxedo"/>
+                <criterion id="textures/entity/cat/white.png"             name="White"      icon="white"/>
+                <criterion id="textures/entity/cat/ragdoll.png"           name="Ragdoll"    icon="ragdoll"/>
+                <criterion id="textures/entity/cat/british_shorthair.png" name="British"    icon="british_shorthair"/>
+                <criterion id="textures/entity/cat/tabby.png"             name="Tabby"      icon="tabby"/>
+                <criterion id="textures/entity/cat/all_black.png"         name="Black"      icon="black"/>
+                <criterion id="textures/entity/cat/persian.png"           name="Persian"    icon="persian"/>
+                <criterion id="textures/entity/cat/siamese.png"           name="Siamese"    icon="siamese"/>
+            </criteria>
+        </advancement>
+    </group>
+    <group name="Nether">
+        <advancement id="minecraft:nether/return_to_sender"         name="Return to Sender"           short_name="Sender" type="challenge"/>
+        <advancement id="minecraft:nether/use_lodestone"            name="Country&#160;Lode, Take Me Home"               short_name="Lodestone" half="false"/>
+        <advancement id="minecraft:nether/charge_respawn_anchor"    name='Not Quite "Nine" Lives'     short_name="Nine Lives"/>
+        <advancement id="minecraft:nether/obtain_crying_obsidian"   name="Who's Cutting Onions?"     short_name="Onions?"/>
+        <advancement id="minecraft:nether/loot_bastion"             name="War Pigs"/>
+        <advancement id="minecraft:nether/find_bastion"             name="Those Were the Days"        short_name="The Days"/>
+        <advancement id="minecraft:nether/find_fortress"            name="A Terrible Fortress"        short_name="Fortress"/>
+        <advancement id="minecraft:nether/root"                     name="Nether"                     icon="nether"/>
+
+        <advancement id="minecraft:nether/uneasy_alliance"          name="Uneasy Alliance"            short_name="Uneasy" type="challenge" half="false"/>
+        <advancement id="minecraft:nether/fast_travel"              name="Subspace Bubble"       short_name="Subspace"   type="challenge" half="false"/>
+        <advancement id="minecraft:nether/brew_potion"              name="Local Brewery"              short_name="Brewery"/>
+        <advancement id="minecraft:nether/obtain_blaze_rod"         name="Into Fire"/>
+        <advancement id="minecraft:nether/distract_piglin"          name="Oh Shiny"/>
+        <advancement id="minecraft:nether/obtain_ancient_debris"    name="Hidden in the&#160;Depths"       short_name="The Depths"/>
+        <advancement id="minecraft:nether/explore_nether"           name="Hot Tourist Destinations"   short_name="Hot Tourist" type="challenge">
+            <criteria goal="Visited">
+                <criterion id="minecraft:nether_wastes"     short_name="Wastes"     type="challenge"/>
+                <criterion id="minecraft:crimson_forest"    short_name="Crimson"    type="challenge"/>
+                <criterion id="minecraft:warped_forest"     short_name="Warped"     type="challenge"/>
+                <criterion id="minecraft:basalt_deltas"     short_name="Basalt"     type="challenge"/>
+                <criterion id="minecraft:soul_sand_valley"  short_name="Soul Sand"  type="challenge"/>
+            </criteria>
+        </advancement>
+        <advancement id="minecraft:nether/netherite_armor"      name="Cover Me in&#160;Debris"    short_name="In Debris"    type="challenge" half="false"/>
+
+        <advancement id="minecraft:nether/all_effects"          name="How Did We Get Here?"    short_name="HDWGH"     type="challenge" half="false"/>
+        <advancement id="minecraft:nether/all_potions"          name="A Furious Cocktail"      short_name="Cocktail"   type="challenge" half="false"/>
+        <advancement id="minecraft:nether/create_full_beacon"   name="Beaconator"              short_name="Beaconator" icon="beacon" type="goal" half="false"/>
+        <advancement id="minecraft:nether/create_beacon"        name="Bring Home the Beacon"   short_name="Beacon"     icon="beacon" half="false"/>
+        <advancement id="minecraft:nether/summon_wither"        name="Withering Heights"       short_name="Withering" half="false"/>
+        <advancement id="minecraft:nether/get_wither_skull"     name="Spooky&#160;Scary Skeleton" short_name="Spooky" half="false"/>
+        <advancement id="minecraft:nether/ride_strider"         name="This Boat Has Legs"      short_name="This Boat" half="false"/>
+    </group>
+    <group name="End">
+        <advancement id="minecraft:end/root"                name="The End"                       icon="end" hidden="true"/>
+
+        <advancement id="minecraft:end/kill_dragon"         name="&#160;Free&#160;the&#160; End" short_name="Free End"/>
+        <advancement id="minecraft:end/dragon_egg"          name="The Next Generation"           short_name="Next Gen" type="goal"/>
+        <advancement id="minecraft:end/enter_end_gateway"   name="Remote Getaway"                short_name="Getaway"/>
+        <advancement id="minecraft:end/find_end_city"       name="City at the End of the Game"   short_name="End City" half="false"/>
+        <advancement id="minecraft:end/dragon_breath"       name="You Need a&#160;Mint"          short_name="Need a Mint" type="goal"/>
+        <advancement id="minecraft:end/respawn_dragon"      name="The End... Again..."           short_name="End Again" type="goal" half="false"/>
+        <advancement id="minecraft:end/elytra"              name="Sky's the Limit"               short_name="The Limit" type="goal" half="false"/>
+        <advancement id="minecraft:end/levitate"            name="Great View From Here"          short_name="Great View" type="challenge" half="false"/>
     </group>
 </group>
