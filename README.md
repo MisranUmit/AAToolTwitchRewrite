@@ -27,7 +27,7 @@ go run main.go advancementData.go
 
 Resultatet blir `AAToolMonitor.exe` i samme mappe.
 
-## ⚙️ Konfigurasjon
+## Konfigurasjon
 
 `config.json`-fil i samme mappe som programmet.
 
