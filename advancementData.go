@@ -9,27 +9,18 @@ import (
 	"strings"
 )
 
-type AdvancementData struct {
-	Display struct {
-		Title       string `json:"title"`
-		Description string `json:"description"`
-		Icon        struct {
-			Item string `json:"item"`
-		} `json:"icon"`
-		Frame      string `json:"frame"`
-		ShowToast  bool   `json:"show_toast"`
-		AnnounceToChat bool   `json:"announce_to_chat"`
-	} `json:"display"`
+type AdvancementProgress struct {
 	Criteria map[string]interface{} `json:"criteria"`
-	Parent   string                 `json:"parent"`
+	Done     bool                   `json:"done"`
 }
 
 type Advancement struct {
-	Id   string
-	Data AdvancementData
+	Id       string
+	Progress AdvancementProgress
 }
 
-// readAdvancementFiles reads all advancements from a world's advancements directory
+// readAdvancementFiles reads all advancements for all players in a world
+// Minecraft stores advancements per-player as UUID.json files
 func readAdvancementFiles(worldPath string) ([]Advancement, error) {
 	advancementsPath := filepath.Join(worldPath, "advancements")
 	
@@ -38,44 +29,57 @@ func readAdvancementFiles(worldPath string) ([]Advancement, error) {
 		return nil, fmt.Errorf("advancements directory not found: %v", err)
 	}
 
-	var advancements []Advancement
+	var allAdvancements []Advancement
 
-	// Walk through all JSON files in the advancements directory
-	err := filepath.Walk(advancementsPath, func(path string, info os.FileInfo, err error) error {
-		if err != nil {
-			return err
+	// Read all UUID-based advancement files
+	files, err := os.ReadDir(advancementsPath)
+	if err != nil {
+		return nil, fmt.Errorf("error reading advancements directory: %v", err)
+	}
+
+	for _, file := range files {
+		if file.IsDir() || !strings.HasSuffix(file.Name(), ".json") {
+			continue
 		}
 
-		if !info.IsDir() && strings.HasSuffix(path, ".json") {
-			// Read and parse the JSON file
-			fileContent, err := os.ReadFile(path)
-			if err != nil {
-				log.Printf("Error reading advancement file %s: %v\n", path, err)
-				return nil
+		filePath := filepath.Join(advancementsPath, file.Name())
+		fileContent, err := os.ReadFile(filePath)
+		if err != nil {
+			log.Printf("Error reading advancement file %s: %v\n", filePath, err)
+			continue
+		}
+
+		// Parse the player's advancement file
+		// Format: { "advancement/id": { "criteria": {...}, "done": true/false }, ... }
+		var playerAdvancements map[string]interface{}
+		err = json.Unmarshal(fileContent, &playerAdvancements)
+		if err != nil {
+			log.Printf("Error parsing advancement file %s: %v\n", filePath, err)
+			continue
+		}
+
+		// Convert to our advancement list
+		for advId, advDataRaw := range playerAdvancements {
+			// Skip metadata fields
+			if advId == "DataVersion" {
+				continue
 			}
 
-			var advData AdvancementData
-			err = json.Unmarshal(fileContent, &advData)
+			// Parse the advancement object
+			advBytes, _ := json.Marshal(advDataRaw)
+			var progress AdvancementProgress
+			err := json.Unmarshal(advBytes, &progress)
 			if err != nil {
-				log.Printf("Error parsing advancement file %s: %v\n", path, err)
-				return nil
+				// Skip entries that don't have the advancement structure
+				continue
 			}
 
-			// Extract the advancement ID from the file path
-			// Path format: <world>/advancements/minecraft/story/mine_wood.json -> minecraft:story/mine_wood
-			relPath, _ := filepath.Rel(advancementsPath, path)
-			advID := strings.TrimSuffix(relPath, ".json")
-			advID = strings.ReplaceAll(advID, "\\", "/")
-			advID = strings.Replace(advID, "/", ":", 1)
-
-			advancements = append(advancements, Advancement{
-				Id:   advID,
-				Data: advData,
+			allAdvancements = append(allAdvancements, Advancement{
+				Id:       advId,
+				Progress: progress,
 			})
 		}
+	}
 
-		return nil
-	})
-
-	return advancements, err
+	return allAdvancements, nil
 }
